@@ -23,14 +23,42 @@
         </div>
         <div id="app-list">
           <div class="list-group">
-            <a class="list-group-item list-group-item-action" 
-            v-bind:class="[active === 'list-' + hiking.videoId ? 'active' : '']" 
-            v-for="hiking in hikings" 
-            v-bind:id="'list-' + hiking.videoId"
-            v-on:click="toggleMarkerClick">
-              <img width="20px" height="20px" src="img/triangle-right.svg" />
-              {{ hiking.name }}
-            </a>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default"
+                v-bind:class="[active === 'list-' + hiking.videoId ? 'active' : '']"
+                v-for="hiking in hikings"
+                v-bind:id="'list-' + hiking.videoId"
+                v-on:click="">
+                <div class="panel-heading" role="tab" v-bind:id="'heading-' + hiking.videoId">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" v-bind:href="'#collapse-' + hiking.videoId" aria-expanded="true" v-bind:aria-controls="'collapse-' + hiking.videoId">
+                      <img width="20px" height="20px" src="img/triangle-right.svg" />
+                      {{ hiking.name }}
+                    </a>
+                  </h4>
+                </div>
+                <div v-bind:id="'collapse-' + hiking.videoId" class="panel-collapse collapse in" role="tabpanel" v-bind:aria-labelledby="'heading-' + hiking.videoId">
+                  <div class="panel-body">
+                    <p>{{ hiking.description }}<p>
+                    <table>
+                      <tr>
+                        <th>Distance</th>
+                        <td>{{ hiking.distance }}</td>
+                        <th>Denivele</th>
+                        <td>{{ hiking.denivele }}</td>
+                      </tr>
+                      <tr>
+                        <th>Difficulte</th>
+                        <td>{{ hiking.difficulte }}</td>
+                        <th>Duree</th>
+                        <td>{{ hiking.duree }}</td>
+                      </tr>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="footer">
               <a class="" href="#">Découvrir La Martinique</a>&nbsp;
               <a class="" href="https://decouvrir-lamartinique.com" target="_blank"><img width="20px" height="20px" src="img/globe.svg" /></a>&nbsp;

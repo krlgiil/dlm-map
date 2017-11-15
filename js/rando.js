@@ -5,11 +5,7 @@ var randos = [
 		"position": {
 			"lat": 14.7576191,
 			"lng": -60.9352059
-		},
-		"description": "Rando de la pointe rouge",
-		"distance": "12",
-		"duree": "3",
-		"denivele": "160"
+		}
 	},
 	{
 		"name": "Savane des Esclaves",
